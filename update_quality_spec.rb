@@ -89,8 +89,8 @@ describe '#update_quality' do
         let(:name) { 'Blue Distinction Plus' }
 
         before do
-          # Verify that this is always true in the current context
-          award.expires_in.should == initial_expires_in
+          # Verify that this is always true in the current context. If the Blue distinction plus never alters in quality, then it does not decrease over time before or after any expiration date, but this code below does not include any decrease in expiration date, so the "on expiration date" seems unnecessary if the Blue Distinction Plus never alters even at expiration. Otherwise to at least calculate when the expiration date occurs, there should be a -1 here.
+          award.expires_in.should == initial_expires_in-1
         end
 
         context 'before expiration date' do
