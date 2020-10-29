@@ -45,7 +45,7 @@ describe '#update_quality' do
         let(:name) { 'Blue First' }
 
         before do
-          # Verify that this is always true in the current context
+          # Verify that this is always true in the current context. This code seems to work. I have spent the last hour trying to figure out how to run the code, and I am getting errors, so I'm going with intuition and understanding of the code.
           award.expires_in.should == initial_expires_in-1
         end
 
