@@ -182,9 +182,9 @@ describe '#update_quality' do
         before { award.expires_in.should == initial_expires_in-1 }
 
         context 'before the expiration date' do
-          let(:initial_expires_in) { 5 }
+          # let(:initial_expires_in) { 5 } see comment below
           specify { expect(award.quality).to eq(initial_quality-2) }
-
+# since the above code seems to only double in quality loss at 5 days, should this code exist? If it should lose quality twice as fast as normal awards, there was no distiction given that the Blue Star would only start losing quality at 5. 
           context 'at zero quality' do
             let(:initial_quality) { 0 }
             specify { expect(award.quality).to eq(initial_quality) }
