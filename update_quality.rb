@@ -90,4 +90,5 @@ class BlueAwards
     return if award.quality == 0
     award.quality -= 2
     award.quality -= 2 if award.expires_in <= 0
+  end
 end
