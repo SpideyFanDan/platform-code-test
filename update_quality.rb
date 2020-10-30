@@ -65,7 +65,7 @@ class BlueAwards
     award.quality -= 1
     award.quality -= 1 if award.expires_in <= 0
   end
-  
+
   def blue_first
     award.expires_in -= 1
     return if award.quality >= 50
@@ -84,4 +84,10 @@ class BlueAwards
     award.quality += 1 if award.expires_in < 10
     award.quality =+ 1 if award.expires_in < 5
   end
+
+  def blue_star
+    award.expires_in -= 1
+    return if award.quality == 0
+    award.quality -= 2
+    award.quality -= 2 if award.expires_in <= 0
 end
