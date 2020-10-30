@@ -17,7 +17,7 @@ describe '#update_quality' do
         let(:name) { 'NORMAL ITEM' }
 
         before do
-          # Verify that this is always true in the current context. This code seems to work. I have spent the last hour trying to figure out how to run the code, and I am getting errors, so I'm going with intuition and understanding of the code.
+          # Verify that this is always true in the current context.
           expect(award.expires_in).to eq(initial_expires_in-1)
         end
 
@@ -45,7 +45,7 @@ describe '#update_quality' do
         let(:name) { 'Blue First' }
 
         before do
-          # Verify that this is always true in the current context. This code seems to work. I have spent the last hour trying to figure out how to run the code, and I am getting errors, so I'm going with intuition and understanding of the code.
+          # Verify that this is always true in the current context.
           award.expires_in.should == initial_expires_in-1
         end
 
@@ -89,8 +89,8 @@ describe '#update_quality' do
         let(:name) { 'Blue Distinction Plus' }
 
         before do
-          # Verify that this is always true in the current context. If the Blue distinction plus never alters in quality, then it does not decrease over time before or after any expiration date, but this code below does not include any decrease in expiration date, so the "on expiration date" seems unnecessary if the Blue Distinction Plus never alters even at expiration. Otherwise to at least calculate when the expiration date occurs, there should be a -1 here.
-          award.expires_in.should == initial_expires_in-1
+          # Verify that this is always true in the current context. 
+          award.expires_in.should == initial_expires_in
         end
 
         context 'before expiration date' do
@@ -112,7 +112,7 @@ describe '#update_quality' do
         let(:name) { 'Blue Compare' }
 
         before do
-          # Verify that this is always true in the current context. This code seems to work based on specifications.
+          # Verify that this is always true in the current context.
           award.expires_in.should == initial_expires_in-1
         end
 
@@ -182,9 +182,8 @@ describe '#update_quality' do
         before { award.expires_in.should == initial_expires_in-1 }
 
         context 'before the expiration date' do
-          # let(:initial_expires_in) { 5 } see comment below
+          let(:initial_expires_in) { 5 }
           specify { expect(award.quality).to eq(initial_quality-2) }
-# since the above code seems to only double in quality loss at 5 days, should this code exist? If it should lose quality twice as fast as normal awards, there was no distiction given that the Blue Star would only start losing quality at 5. 
           context 'at zero quality' do
             let(:initial_quality) { 0 }
             specify { expect(award.quality).to eq(initial_quality) }
